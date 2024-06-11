@@ -4,8 +4,23 @@ Given a json object, each class gets necessary data as well as other attributes 
 '''
 
 class Track:
+    empty_audio_data_df = {
+        'danceability':None,
+        'energy':None,
+        'key':None,
+        'loudness':None,
+        'mode':None,
+        'speechiness':None,
+        'acousticness':None,
+        'instrumentalness':None,
+        'liveness':None,
+        'valence':None,
+        'tempo':None,
+        'time_signature':None
+    }
+
     # Track needs two json objects for necessary data
-    def __init__(self, track_info_json, track_audio_json):
+    def __init__(self, track_info_json, track_audio_json=empty_audio_data_df):
         self.id = track_info_json['id']
         self.data = {
             'id':track_info_json['id'],

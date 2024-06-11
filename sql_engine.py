@@ -19,7 +19,7 @@ class SQLEngine:
             print(f"Table name <{table}> not supported.")
             return
         else:
-            return list(pd.read_sql(f"select id from {table}", self.engine)[column])
+            return list(pd.read_sql(f"select {column} from {table}", self.engine)[column])
     
     # given a dict of pandas dataframes, inserts data into correct table
     def insert_table_data(self, df_dict):
@@ -38,11 +38,3 @@ class SQLEngine:
                         # note, will fail to insert data into playlist_tracks' if playlist has already been updated
                         # might add functionality to prevent this later
                         print(f"Failed to insert data into <{table}>.")
-                    
-
-    # function to add a new playlist to the database
-    # not called in driver object, used to manually add new playlists
-    def add_playlist(self, playlist_id, name, type):
-        df = pd.DataFrame(data=[[playlist_id, name, type]], columns=['id', 'name', 'type'])
-        with self.engine.connect() as con:
-            df.to_sql('playlists', con=con, if_exists='append', index=False)

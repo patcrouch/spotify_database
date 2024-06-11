@@ -1,3 +1,7 @@
+'''
+APIRequest object gets Spotify data from Spotify API
+'''
+
 import requests
 from math import ceil
 
