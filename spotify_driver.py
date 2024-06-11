@@ -96,7 +96,8 @@ class Driver:
             print(f"Updating '{playlist_dict[id]}'...")
             self.update_playlist(id, date)
             print(f"Updated '{playlist_dict[id]}'.")
-            print(f"{i+1} of {len(playlist_dict)} playlists have been updated.\n")
+            print(f"{i+1} of {len(playlist_dict)} playlists have been updated.")
+            print('-----------------------------------------------------------------')
 
 
     # given a list of tracks, adds artists to db if they don't exist
